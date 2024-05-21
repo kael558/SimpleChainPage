@@ -6,6 +6,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     const data = new FormData();
     data.append('email', email);
     data.append('idea', idea);
+    data.append('sheetName', 'SimpleChain');
 
     try {
       const response = await fetch(
