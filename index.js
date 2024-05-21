@@ -1,5 +1,12 @@
 document.getElementById('contactForm').addEventListener('submit', async function(event) {
     event.preventDefault();
+
+    const form = document.getElementById('contactForm');
+    const loading = document.getElementById('loading');
+
+    loading.style.display = 'block';
+    form.classList.add('blur-effect');
+
     const email = document.getElementById('email').value;
     const idea = document.getElementById('idea').value;
 
@@ -15,12 +22,17 @@ document.getElementById('contactForm').addEventListener('submit', async function
           method: 'POST',
           body: data,
         },
+
       );
         const json = await response.json();
         console.log('Success:', JSON.stringify(json));
+        alert('Thank you for your submission!');
     } catch (error) {
         console.error('Error:', error);
+        alert('An error occurred!');
+    } finally {
+        // Hide loading indicator and remove blur effect
+        loading.style.display = 'none';
+        form.classList.remove('blur-effect');
     }
-
-    alert('Thank you for your submission!');
 });
