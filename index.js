@@ -38,3 +38,4 @@ document.getElementById('contactForm').addEventListener('submit', async function
         form.reset();
     }
 });
+
